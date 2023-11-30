@@ -1,27 +1,33 @@
 #!/usr/bin/python3
 """
-Pascal Triangle function
+Pascal's Triangle
+
+This script defines a function to generate Pascal's triangle up to a specified
+number of rows.
+
+Usage:
+    To use this script, import the pascal_triangle function and call it with
+    the desired number of rows.
+
 """
 
 def pascal_triangle(n):
-    #return = list of numbers in pascal triangle form
-    if n <= 0:
-        return []
+    """
+    Generate Pascal's triangle up to n rows.
 
-    pascal_triangle = [0] * n
+    Args:
+        n (int): The number of rows to generate in Pascal's triangle.
 
-    for i in range(n):
-        # defines a row and fills the first and last idx with 1
-        new_row = [0] * (i+1)
-        new_row[0] = 1
-        new_row[len(new_row) - 1] = 1
-
-        for j in range(1, i):
-            if j > 0 and j < len(new_row):
-                a = pascal_triangle[i - 1][j]
-                b = pascal_triangle[i - 1][j - 1]
-                new_row[j] = a + b
-
-        pascal_triangle[i] = new_row
-
-    return pascal_triangle
+    Returns:
+        List[List[int]]: A list of lists representing Pascal's triangle.
+    """
+    res = []
+    if n > 0:
+        for i in range(1, n + 1):
+            level = []
+            C = 1
+            for j in range(1, i + 1):
+                level.append(C)
+                C = C * (i - j) // j
+            res.append(level)
+    return res
