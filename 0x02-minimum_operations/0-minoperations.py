@@ -27,18 +27,19 @@ def minOperations(n):
 
     while done < n:
         if clipboard == 0:
-            ''' Initialize (the first copy all and paste) '''
+            # Initialize (the first copy all and paste)
             clipboard = done
             done += clipboard
             ops_count += 2
         elif n - done > 0 and (n - done) % done == 0:
-            ''' Copy all and paste '''
+            # Copy all and paste
             clipboard = done
             done += clipboard
             ops_count += 2
         elif clipboard > 0:
-            ''' Paste '''
+            # Paste
             done += clipboard
             ops_count += 1
 
     return ops_count
+
