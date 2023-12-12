@@ -1,14 +1,44 @@
-0x02. Minimum Operations
-Algorithm                                |Python
+#!/usr/bin/python3
+'''
+The minimum operations coding challenge.
 
-Tasks
-0. Minimum Operations
-In a text file, there is a single character H. Your text editor can execute only two operations in this file: Copy All and Paste. Given a number n, write a method that calculates the fewest number of operations needed to result in exactly n H characters in the file.
-•	Prototype: def minOperations(n)
-•	Returns an integer
-•	If n is impossible to achieve, return 0
-Example:
-n = 9
-H => Copy All => Paste => HH => Paste =>HHH => Copy All => Paste => HHHHHH => Paste => HHHHHHHHH
-Number of operations: 6
+This module defines a function, minOperations, that computes
+the fewest number of operations needed to result in exactly n
+H characters.
+'''
 
+def minOperations(n):
+    '''
+    Computes the fewest number of operations needed to result
+    in exactly n H characters.
+
+    Parameters:
+        n (int): The target number of H characters.
+
+    Returns:
+        int: The fewest number of operations needed.
+    '''
+    if not isinstance(n, int):
+        return 0
+
+    ops_count = 0
+    clipboard = 0
+    done = 1
+
+    while done < n:
+        if clipboard == 0:
+            ''' Initialize (the first copy all and paste) '''
+            clipboard = done
+            done += clipboard
+            ops_count += 2
+        elif n - done > 0 and (n - done) % done == 0:
+            ''' Copy all and paste '''
+            clipboard = done
+            done += clipboard
+            ops_count += 2
+        elif clipboard > 0:
+            ''' Paste '''
+            done += clipboard
+            ops_count += 1
+
+    return ops_count
