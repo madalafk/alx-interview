@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-This module defines a function, minOperations, that computes
+This module defines a function, min_Operations, that computes
 the fewest number of operations needed to result in exactly n
 H characters.
 '''
@@ -9,10 +9,9 @@ def minOperations(n):
     '''
     Computes the fewest number of operations needed to result
     in exactly n H characters.
+
     Parameters:
-    n (int): The target number of H characters.
-    Returns:
-    int: The fewest number of operations needed.
+    n (int): The target number of H character
     '''
     if not isinstance(n, int):
         return 0
@@ -32,3 +31,9 @@ def minOperations(n):
             clipboard = done
             done += clipboard
             ops_count += 2
+        elif clipboard > 0:
+            # Paste
+            done += clipboard
+            ops_count += 1
+
+    return ops_count
