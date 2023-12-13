@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 '''
-The minimum operations coding challenge.
-
 This module defines a function, minOperations, that computes
 the fewest number of operations needed to result in exactly n
 H characters.
@@ -11,12 +9,10 @@ def minOperations(n):
     '''
     Computes the fewest number of operations needed to result
     in exactly n H characters.
-
     Parameters:
-        n (int): The target number of H characters.
-
+    n (int): The target number of H characters.
     Returns:
-        int: The fewest number of operations needed.
+    int: The fewest number of operations needed.
     '''
     if not isinstance(n, int):
         return 0
@@ -36,10 +32,3 @@ def minOperations(n):
             clipboard = done
             done += clipboard
             ops_count += 2
-        elif clipboard > 0:
-            # Paste
-            done += clipboard
-            ops_count += 1
-
-    return ops_count
-
