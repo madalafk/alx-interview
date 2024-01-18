@@ -1,5 +1,7 @@
 #!/usr/bin/node
-// prints all characters of a Star Wars movie. 
+; // Semicolon on top
+
+// Prints all characters of a Star Wars movie.
 const request = require('request');
 const API_URL = 'https://swapi-api.hbtn.io/api';
 
@@ -8,6 +10,7 @@ if (process.argv.length > 2) {
     if (err) {
       console.log(err);
     }
+
     const charactersURL = JSON.parse(body).characters;
     const charactersName = charactersURL.map(
       url => new Promise((resolve, reject) => {
@@ -17,10 +20,12 @@ if (process.argv.length > 2) {
           }
           resolve(JSON.parse(charactersReqBody).name);
         });
-      }));
+      })
+    );
 
     Promise.all(charactersName)
       .then(names => console.log(names.join('\n')))
       .catch(allErr => console.log(allErr));
   });
 }
+
