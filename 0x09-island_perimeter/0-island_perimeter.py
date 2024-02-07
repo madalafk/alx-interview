@@ -4,17 +4,16 @@ function def island_perimeter(grid): that returns the perimeter
 of the island described in grid
 """
 
-
 def island_perimeter(grid):
     """
     Calculates the perimeter of the island described in grid.
 
     Args:
-        grid (list of list of int): A grid where 1 represents land and 0 represents water.
+        grid (list of list of int): A grid where 1 represents
+        land and 0 represents water.
 
     Returns:
         int: The perimeter of the island.
-
     """
     counter = 0
     grid_max = len(grid) - 1  # index of the last list in the grid
